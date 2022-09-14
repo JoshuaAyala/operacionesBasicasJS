@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+			*{
+				font-family: 'Roboto', sans-serif;
+			}
+
+			.container{
+				padding: 30px 50px 30px 50px;
+			}
+
+			.txtbox{
+				height: 30px;
+				margin-right: 5px;
+			}
+
+			.resultados li{
+				list-style: none;
+				display: inline-block;
+				text-decoration: none;
+			}
+
+			.boton{
+				margin: 20px auto;
+				width: 350px; 
+				height: 50px;
+				text-align: center;
+				padding: 2%;
+				padding-top: 15px;
+				cursor: pointer;
+				background: black;
+				color: white;
+				border-radius: 3px;
+			}
+			.boton:hover{
+				box-shadow: 1px 1px 10px gray;
+				background-color: white;
+				color: black;
+				transition: 0.1s;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<div class="container">
+				<div class="values">
+					<h1>Ingrese dos valores</h1>
+					<input type="int" required="required" id="firstValue" class="txtbox">
+					<input type="int" required="required" id="secondValue" class="txtbox">
+					<br>
+					<button class="boton" id="boton" onclick="calcular()">Calcular</button>
+				</div>
+				<div class="resultados">
+					<ul>
+						<li>
+							<h3>Suma</h3>
+							<input type="int" readonly="true"  id="sumaRes" class="txtbox">
+						</li>
+						<li>
+							<h3>Resta</h3>
+						<input type="int" readonly="true" id="restaRes" class="txtbox">
+						</li>
+						<li>
+							<h3>División</h3>
+							<input type="int" readonly="true" id="divisionRes" class="txtbox">
+						</li>
+						<li>
+							<h3>Multiplicación</h3>
+							<input type="int" readonly="true" id="multiplicacionRes" class="txtbox">
+						</li>
+						<li>
+							<h3>Concatenación</h3>
+							<input type="int" readonly="true" id="concaRes" class="txtbox">
+						</li>
+						<li>
+							<h3>¿Son iguales?</h3>
+							<input type="int" readonly="true" id="comparacionRes" class="txtbox">
+						</li>
+					</ul>
+				</div>
+				<p style="margin-top: 60px;">
+					<b>Nota:</b> Ten en cuenta que si introduces valores de texto sólo funcionará la concatenación y si procede, la comparación.
+				</p>
+			</center>
+		</div>
+		<script>
+			function calcular(){
+				var valor1 = document.getElementById("firstValue").value;						// DECLARAMOS LAS VARIABLES TOMANDO
+				var valor2 = document.getElementById("secondValue").value;						// LOS VALORES DE LOS TEXTBOX
+
+				if(valor1 == "" || valor2 == ""){												// COMPROBACIÓN DE QUE NO HAYA ESPACIOS VACÍOS
+					alert("[!] Se deben de llenar los dos campos.")
+				} else{
+					let suma = document.getElementById("sumaRes");               			
+					var resta = document.getElementById("restaRes");
+					var division = document.getElementById("divisionRes");
+					var multiplicacion = document.getElementById("multiplicacionRes");			// DECLARAMOS LOS TEXTBOX
+					var concatenacion = document.getElementById("concaRes");
+					var comparacion = document.getElementById("comparacionRes");
+
+					suma.value = parseInt(valor1) + parseInt(valor2);
+					resta.value = valor1 - valor2;
+					division.value = valor1 / valor2;											// REALIZAMOS LAS OPERACIONES Y ASIGNACIONES DE VALORES
+					multiplicacion.value = valor1 * valor2;
+					concatenacion.value = valor1 + valor2;
+					if(valor1 == valor2){
+						comparacion.value = "Sí";
+					} else{
+						comparacion.value = "No";
+					}
+				}
+			}
+
+		</script>
+	</body>
+</html>
